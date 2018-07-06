@@ -156,7 +156,7 @@ main () {
     fi
 
     # Create the cloudstore backup if does not exist. 
-    if $MINIO mb $MINIOTARGET/$MINIOTARGETDIR/; then
+    if $MINIO mb $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/; then
         lecho "Target directory: Succesfully created the $MINIOTARGET/$MINIOTARGETDIR directory"
     else
         lecho "Target directory: Could not create the $MINIOTARGET/$MINIOTARGETDIR directory"
