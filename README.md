@@ -1,11 +1,11 @@
 # LXD Backup script
 
-This small Bash script will backup your LXC container with help of the Rlone Cloud backuptool.
+This small Bash script will backup your LXC container with help of the powerful Minio Client tools.
 
 ## What does it do:
 
 * This scripts creates a backup image from a snaphot from your LXC container that is managed with LXD. 
-* The script will upload your image to a cloudstore with Rlcone.
+* The script will upload your image to a cloudstore with Minio Client (mc).
 * Online backup of your LXC container
 * Creates an easy and ready to use LXC image to import with the LXC import command. 
 
@@ -20,13 +20,12 @@ You can run the script from the commandline, or place it in your cron.
 
 Prerequisites:
 
-* Install Rclone: https://github.com/ncw/rclone
-* Make sure rclone works with your Cloudstorage provider
+* Install Minio Client: https://minio.io
 
 Install it by cloning this repostory on your LXC host:
 
 ```
-git clone https://github.com/cloudrkt/lxdbackup 
+git clone https://github.com/systemlevel/lxdbackup.git
 ```
 
 Then copy the lxdbackup to your $path:
