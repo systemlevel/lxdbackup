@@ -37,7 +37,7 @@ cd lxdbackup && cp lxdbackup /usr/bin/
 Don't forget to make it executable:
 
 ```
-chmod +x /usr/bin/lxbackup
+chmod +x /usr/bin/lxdbackup
 ```
 
 Then test it with:
