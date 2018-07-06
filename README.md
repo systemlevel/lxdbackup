@@ -20,7 +20,7 @@ You can run the script from the commandline, or place it in your cron.
 
 Prerequisites:
 
-* Install Minio Client: https://minio.io
+* Install Minio Client: https://minio.io/downloads.html#download-client
 
 Install it by cloning this repostory on your LXC host:
 
