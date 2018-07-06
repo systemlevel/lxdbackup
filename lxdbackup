@@ -31,7 +31,7 @@ fi
 # Default behaviour
 LXCCONTAINER="$1"
 BACKUPDATE=$(date +"%m-%d-%y-%H-%M")
-RCLONE=$(which rclone)
+# RCLONE=$(which rclone)
 MINIO=$(which mc)
 LXC=$(which lxc)
 
@@ -41,10 +41,10 @@ if [ -z "$LXC" ]; then
     exit 1 ;
 fi
 
-if [ -z "$RCLONE" ]; then
-    echo "RCLONE command NOT found";
-    exit 1 ;
-fi
+# if [ -z "$RCLONE" ]; then
+#     echo "RCLONE command NOT found";
+#     exit 1 ;
+# fi
 
 if [ -z "$MINIO" ]; then
     echo "MINIO command NOT found";
