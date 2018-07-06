@@ -9,10 +9,14 @@
 
 # The target bucket or container in your Rclone cloudstorage 
 RCLONETARGETDIR="lxdbackup" 
+# The target bucket or container in your Rclone cloudstorage 
+MINIOTARGETDIR="lxdbackup" 
 # Optional Rclone settings.
 RCLONEOPTIONS=""
 # Rclone target cloud used in your rlcone.conf
 RCLONETARGET=""
+# Wasabi target cloud used in your rlcone.conf
+MINIOTARGET="wasabi"
 # Directory were local images are stored before upload
 WORKDIR="/tmp/lxdbackup"
 
@@ -28,6 +32,7 @@ fi
 LXCCONTAINER="$1"
 BACKUPDATE=$(date +"%m-%d-%y-%H-%M")
 RCLONE=$(which rclone)
+MINIO=$(which mc)
 LXC=$(which lxc)
 
 # Check if which is finding the executables to contintue. 
@@ -38,6 +43,11 @@ fi
 
 if [ -z "$RCLONE" ]; then
     echo "RCLONE command NOT found";
+    exit 1 ;
+fi
+
+if [ -z "$MINIO" ]; then
+    echo "MINIO command NOT found";
     exit 1 ;
 fi
 
@@ -146,21 +156,21 @@ main () {
     fi
 
     # Create the cloudstore backup if does not exist. 
-    if $RCLONE mkdir $RCLONETARGET:$RCLONETARGETDIR; then
-        lecho "Target directory: Succesfully created the $RCLONETARGET:$RCLONETARGETDIR directory"
+    if $MINIO mb $MINIOTARGET/$MINIOTARGETDIR/; then
+        lecho "Target directory: Succesfully created the $MINIOTARGET/$MINIOTARGETDIR directory"
     else
-        lecho "Target directory: Could not create the $RCLONETARGET:$RCLONETARGETDIR directory"
+        lecho "Target directory: Could not create the $MINIOTARGET/$MINIOTARGETDIR directory"
         cleanup
         return 1
     fi
 
     # Upload the container image to the cloudstore backup. 
-    if $RCLONE $RCLONEOPTIONS copy $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz $RCLONETARGET:$RCLONETARGETDIR/$LXCCONTAINER/; then
-        lecho "Upload: Succesfully uploaded $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz image to $RCLONETARGET:$RCLONETARGETDIR/$LXCCONTAINER/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz"
+    if $MINIO $RCLONEOPTIONS mirror $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/; then
+        lecho "Upload: Succesfully uploaded $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz image to $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz"
         cleanup
-        lecho "Upload: Backup $BACKUPDATE for $LXCCONTAINER uploaded succesfully to $RCLONETARGET."
+        lecho "Upload: Backup $BACKUPDATE for $LXCCONTAINER uploaded succesfully to $MINIOTARGET/"
     else
-        lecho "Could not create the $RCLONETARGET:$RCLONETARGETDIR/$LXCCONTAINER/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz on $RCLONETARGET:$RCLONETARGETDIR/$LXCCONTAINER/"
+        lecho "Could not create the $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz on $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/"
         cleanup
         return 1
     fi
