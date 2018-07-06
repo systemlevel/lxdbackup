@@ -165,7 +165,7 @@ main () {
     fi
 
     # Upload the container image to the cloudstore backup. 
-    if $MINIO $RCLONEOPTIONS cp $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/; then
+    if $MINIO $RCLONEOPTIONS cp $WORKDIR/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/; then
         lecho "Upload: Succesfully uploaded $LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz image to $MINIOTARGET/$MINIOTARGETDIR/$LXCCONTAINER/$LXCCONTAINER-BACKUP-$BACKUPDATE-IMAGE.tar.gz"
         cleanup
         lecho "Upload: Backup $BACKUPDATE for $LXCCONTAINER uploaded succesfully to $MINIOTARGET/"
