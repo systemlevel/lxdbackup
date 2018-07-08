@@ -1,6 +1,6 @@
 # LXD Backup script
 
-This small Bash script will backup your LXC container with help of the powerful Minio Client tools.
+This Bash script backsup your LXD container (https://www.ubuntu.com/containers/lxd) with help of the powerful Minio Client (https://www.minio.io/features.html). 
 
 ## What does it do:
 
@@ -21,6 +21,7 @@ You can run the script from the commandline, or place it in your cron.
 Prerequisites:
 
 * Install Minio Client: https://minio.io/downloads.html#download-client
+* Configure Minio Client by setting up your config hosts (mc config host add [minio host details])
 
 Install it by cloning this repostory on your LXC host:
 
@@ -34,7 +35,7 @@ Then copy the lxdbackup to your $path:
 cd lxdbackup && cp lxdbackup /usr/bin/
 ```
 
-Don't forget to make it executable:
+Make it executable:
 
 ```
 chmod +x /usr/bin/lxdbackup
