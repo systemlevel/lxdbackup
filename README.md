@@ -21,7 +21,7 @@ You can run the script from the commandline, or place it in your cron.
 Prerequisites:
 
 * Install Minio Client: https://minio.io/downloads.html#download-client
-* Configure Minio Client by setting up your config hosts (mc config host add [minio host details])
+* Configure Minio Client by setting up your config hosts (mc config host add [minio host details]): https://docs.minio.io/docs/minio-client-complete-guide
 
 Install it by cloning this repostory on your LXC host:
 
