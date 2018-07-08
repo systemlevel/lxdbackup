@@ -1,6 +1,6 @@
 # LXD Backup script
 
-This Bash script backsup your LXD container (https://www.ubuntu.com/containers/lxd) with help of the powerful Minio Client (https://www.minio.io/features.html). 
+This Bash script backs up your LXD container (https://www.ubuntu.com/containers/lxd) leveraging Minio Client (https://www.minio.io/features.html) (instead of rclone). 
 
 ## What does it do:
 
