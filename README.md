@@ -1,11 +1,11 @@
 # LXD Backup script
 
-This Bash script backs up your LXD container (https://www.ubuntu.com/containers/lxd) leveraging Minio Client (https://www.minio.io/features.html) (instead of rclone). 
+This Bash script backs up your LXD container (https://www.ubuntu.com/containers/lxd) leveraging Minio Client (https://www.minio.io/features.html) (in place of rclone). 
 
 ## What does it do:
 
 * This scripts creates a backup image from a snaphot from your LXC container that is managed with LXD. 
-* The script will upload your image to a cloudstore with Minio Client (mc).
+* The script will upload your image to any S3-compatible cloudstore with Minio Client (mc).
 * Online backup of your LXC container
 * Creates an easy and ready to use LXC image to import with the LXC import command. 
 
