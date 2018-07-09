@@ -9,6 +9,10 @@ This Bash script backs up your LXD container (https://www.ubuntu.com/containers/
 * Online backup of your LXC container
 * Creates an easy and ready to use LXC image to import with the LXC import command. 
 
+## Requirements:
+
+* Tested with LXD 3.0 and higher.
+
 ## What it does not cover:
 
 * Create a constant database backup, this does not work with backups.
